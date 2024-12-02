@@ -15,6 +15,7 @@ def safeLine(line, increasing):
     return safeLine(line[1:], line[0] < line[1]) #recurse
 
 def checkFaultyLines(line):
+    print("initial", line)
     for index, item in enumerate(line):
         sliceLine = line[:index] + line[index+1:]
         print(sliceLine)
@@ -29,8 +30,8 @@ for line in lines:
     line = list(map(int, line))
     result = safeLine(line, None)
     safe_reports += result
-    if(result < 1):
-        safe_reports += checkFaultyLines(line)
+    # if(result < 1):
+    #     safe_reports += checkFaultyLines(line)
 
 print("safe_reports", safe_reports)
     
