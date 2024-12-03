@@ -3,7 +3,6 @@ lines = f.readlines()
 
 safe_reports = 0
 def safeLine(line, increasing):
-    # print(line, increasing)
     if(len(line) < 2): #stop condition
         return 1 #1 means success
     if(
@@ -30,23 +29,7 @@ for line in lines:
     line = list(map(int, line))
     result = safeLine(line, None)
     safe_reports += result
-    # if(result < 1):
-    #     safe_reports += checkFaultyLines(line)
+    if(result < 1):
+        safe_reports += checkFaultyLines(line)
 
 print("safe_reports", safe_reports)
-    
-
-    # if(recurse_result[0] == 1 or recurse_result[0] == 0):
-    #     return recurse_result
-    # #This part should only run at index 0
-    # if(index == 0 and recurse_result[0] < 0):
-    #     # print("index", index, type(index))
-    #     print("recurse", recurse_result)
-    #     # del line[recurse_result[1]] #remove first falty index
-
-    #     if(try1[0] == 1):
-    #         return (1, index)
-    #     print("try2",try2)
-    #     if(try2[0] == 1):
-    #         return (1, index)
-    #     return (0, index)
