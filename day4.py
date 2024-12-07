@@ -12,7 +12,6 @@ def matrix_count(inputMatrix):
     matrixTotal = 0
     for line in inputMatrix:
         for i in range(len(line)-3):
-            # print("here", line[i])
             word = line[i] + line[i+1] + line[i+2] + line[i+3]
             if(word == 'XMAS' or word == 'SAMX'):
                 matrixTotal += 1
@@ -21,18 +20,19 @@ def matrix_count(inputMatrix):
 def matrix_to_diagonal(inputMatrix):
     cote = inputMatrix.shape[0]
     newOrder = np.full([cote*2-1, cote], "." ,dtype="S1")
+    print(inputMatrix)
     for i in range(cote*2-1): #intuition
         if(i < cote):
             j = 0
             while j <= i:
-                newOrder[i, j] = str(matrix[i-j,j])
+                newOrder[i, j] = str(inputMatrix[i-j,j])
                 j += 1
         else:
             k = 0
             j = i - cote + 1
             while j < cote:
                 # print("check", i, i-j, j)
-                newOrder[i, k] = str(matrix[i - j, j])
+                newOrder[i, k] = str(inputMatrix[i - j, j])
                 j += 1
                 k += 1
     return newOrder
@@ -45,8 +45,9 @@ def count_xmas(inputMatrix):
     transposed = inputMatrix.transpose()
     vectorized_char = np.vectorize(numpy_cleaning)
     diagonal_matrix = vectorized_char(matrix_to_diagonal(inputMatrix))
-    flipped_diagonal_matrix = vectorized_char(matrix_to_diagonal(np.flipud(matrix)))
-
+    print("sep")
+    flipped_matrix = np.fliplr(inputMatrix)
+    flipped_diagonal_matrix = vectorized_char(matrix_to_diagonal(flipped_matrix))
 
     total += matrix_count(inputMatrix)
     total += matrix_count(transposed)
@@ -65,14 +66,3 @@ print(count_xmas(matrix))
 # test = np.zeros([4,1])
 # print(test[1,0])
 # print(test[0,1])
-# diagonal_matrix = matrix_to_diagonal(matrix)
-# total += matrix_count(matrix)
-# total += matrix_count(diagonal_matrix)
-# matrix = matrix.transpose()
-# total += matrix_count(matrix)
-# total += matrix_count(diagonal_matrix)
-
-# print(b)
-# print(matrix.shape[0]*)
-# print(211 + 216)
-
