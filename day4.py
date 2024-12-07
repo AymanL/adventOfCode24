@@ -1,11 +1,8 @@
 import numpy as np
-from scipy.ndimage import rotate
 
 #Get the text as a matrix
 lines = np.loadtxt("datasets/day4.txt", dtype=str)
 matrix = np.array([ list(word) for word in lines ])
-
-total = 0
 
 #For a given line, look if XMAS or SAMX is found
 def matrix_count(inputMatrix):
@@ -56,13 +53,3 @@ def count_xmas(inputMatrix):
     return total
 
 print(count_xmas(matrix))
-
-# print(np.full([10*2-1, 10], "." ,dtype="S1"))
-
-# print(matrix_count(matrix))        
-# print(matrix_to_diagonal(matrix))
-# for i in range(10*2-1):
-#     print(i)
-# test = np.zeros([4,1])
-# print(test[1,0])
-# print(test[0,1])
